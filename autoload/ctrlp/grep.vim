@@ -51,7 +51,7 @@ function! s:generate_grep_command(input_query, ...)
     if executable('ag')
       let cmd = "ag --vimgrep --ignore tags '{query}' " . (limit_num_result? ' --max-count {max_candidates}' : '')
     else
-      let cmd = "grep . '{query}'"
+      let cmd = "grep -r . -e '{query}'"
   endif
 
   let query = s:DataString.replace(a:input_query," ", ".*")
